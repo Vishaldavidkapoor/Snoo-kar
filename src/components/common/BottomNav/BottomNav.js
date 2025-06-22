@@ -14,7 +14,7 @@ const Tab = createBottomTabNavigator();
 export default BottomNav = () => {
   return (
     <Tab.Navigator
-    screenOptions={{ headerShown: false }}
+      screenOptions={{ headerShown: false }}
     >
       <Tab.Screen
         name="Home"
@@ -22,7 +22,7 @@ export default BottomNav = () => {
         options={{
           tabBarIcon: () => (
             <View
-              style={{ flexDirection: "column", alignItems: "center",  }}
+              style={{ flexDirection: "column", alignItems: "center" }}
               onPress={() => navigation.navigate("Profile")}
             >
               <Image
@@ -38,79 +38,79 @@ export default BottomNav = () => {
           ),
         }}
       />
-      <Tab.Screen name="Book a Table" component={Choice}   options={{
-          tabBarIcon: () => (
-            <View
-              style={{ flexDirection: "column", alignItems: "center",  }}
-              onPress={() => navigation.navigate("Profile")}
-            >
-              <Image
-                style={{
-                  height: 30,
-                  width: 30,
-                  borderRadius: 7,
-                  backgroundColor: "black",
-                }}
-                source={require("../../../../assets/navIcons/8.png")}
-              />
-            </View>
-          ),
-        }} />
-      <Tab.Screen name="Food" component={Food}   options={{
-          tabBarIcon: () => (
-            <View
-              style={{ flexDirection: "column", alignItems: "center",  }}
-              onPress={() => navigation.navigate("Profile")}
-            >
-              <Image
-                style={{
-                  height: 30,
-                  width: 30,
-                  borderRadius: 7,
-                  backgroundColor: "black",
-                }}
-                source={require("../../../../assets/navIcons/popcorn.png")}
-              />
-            </View>
-          ),
-        }} />
-      <Tab.Screen name="Profile" component={Profile}   options={{
-          tabBarIcon: () => (
-            <View
-              style={{ flexDirection: "column", alignItems: "center",  }}
-              onPress={() => navigation.navigate("Profile")}
-            >
-              <Image
-                style={{
-                  height: 30,
-                  width: 30,
-                  borderRadius: 7,
-                  backgroundColor: "black",
-                }}
-                source={require("../../../../assets/navIcons/pro.png")}
-              />
-            </View>
-          ),
-        }}/>
-        
-      <Tab.Screen name="Settings" component={Settings}    options={{
-          tabBarIcon: () => (
-            <View
-              style={{ flexDirection: "column", alignItems: "center",  }}
-              onPress={() => navigation.navigate("Profile")}
-            >
-              <Image
-                style={{
-                  height: 30,
-                  width: 30,
-                  borderRadius: 7,
-                  backgroundColor: "black",
-                }}
-                source={require("../../../../assets/navIcons/set.png")}
-              />
-            </View>
-          ),
-        }}/>
+      <Tab.Screen name="Book a Table" component={Choice} options={{
+        tabBarIcon: () => (
+          <View
+            style={{ flexDirection: "column", alignItems: "center" }}
+            onPress={() => navigation.navigate("Profile")}
+          >
+            <Image
+              style={{
+                height: 30,
+                width: 30,
+                borderRadius: 7,
+                backgroundColor: "black",
+              }}
+              source={require("../../../../assets/navIcons/8.png")}
+            />
+          </View>
+        ),
+      }} />
+      <Tab.Screen name="Food" component={Food} options={{
+        tabBarIcon: () => (
+          <View
+            style={{ flexDirection: "column", alignItems: "center" }}
+            onPress={() => navigation.navigate("Profile")}
+          >
+            <Image
+              style={{
+                height: 30,
+                width: 30,
+                borderRadius: 7,
+                backgroundColor: "black",
+              }}
+              source={require("../../../../assets/navIcons/popcorn.png")}
+            />
+          </View>
+        ),
+      }} />
+      <Tab.Screen name="Profile" component={Profile} options={{
+        tabBarIcon: () => (
+          <View
+            style={{ flexDirection: "column", alignItems: "center" }}
+            onPress={() => navigation.navigate("Profile")}
+          >
+            <Image
+              style={{
+                height: 30,
+                width: 30,
+                borderRadius: 7,
+                backgroundColor: "black",
+              }}
+              source={require("../../../../assets/navIcons/pro.png")}
+            />
+          </View>
+        ),
+      }} />
+
+      <Tab.Screen name="Settings" component={Settings} options={{
+        tabBarIcon: () => (
+          <View
+            style={{ flexDirection: "column", alignItems: "center" }}
+            onPress={() => navigation.navigate("Profile")}
+          >
+            <Image
+              style={{
+                height: 30,
+                width: 30,
+                borderRadius: 7,
+                backgroundColor: "black",
+              }}
+              source={require("../../../../assets/navIcons/set.png")}
+            />
+          </View>
+        ),
+      }} />
     </Tab.Navigator>
   );
 };

@@ -8,7 +8,7 @@ import {
   Button,
 } from 'react-native';
 import Sound from 'react-native-sound';
-import Header from '../../common/Header/Header';
+import { Header } from '../../common/Header/Header';
 
 export default BookingScreen = ({navigation, route}) => {
   const requireAudio = require('../../../../assets/break.mp3');
@@ -27,7 +27,7 @@ export default BookingScreen = ({navigation, route}) => {
     navigation.navigate('Success');
   };
   return (
-    <View style={{flex: 1, backgroundColor: 'black'}}>
+    <View style={{flex: 1,}}>
       <Header text="Book a Table" />
       <Image
         style={{height: '31%', width: '100%', top: 10}}

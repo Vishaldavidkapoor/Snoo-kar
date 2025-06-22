@@ -1,19 +1,21 @@
 import React from 'react';
 import {SliderBox} from 'react-native-image-slider-box';
 import {TouchableOpacity, Text, View, ImageBackground} from 'react-native';
-import Header from '../../common/Header/Header';
-import BottomNav from '../../common/BottomNav/BottomNav';
+import { useNavigation } from '@react-navigation/native';
+import { Header } from '../../common/Header/Header';
 
-export default Carousel = ({navigation}) => {
-  // const images = [
-  //   'https://source.unsplash.com/1024x768/?nature',
-  //   'https://source.unsplash.com/1024x768/?water',
-  //   'https://source.unsplash.com/1024x768/?girl',
-  //   'https://source.unsplash.com/1024x768/?tree',
-  // ];
+export default Carousel = () => {
+
+  const navigation = useNavigation();
+  const images = [
+    'https://source.unsplash.com/1024x768/?nature',
+    'https://source.unsplash.com/1024x768/?water',
+    'https://source.unsplash.com/1024x768/?girl',
+    'https://source.unsplash.com/1024x768/?tree',
+  ];
   return (
     <View style={{flex: 1, flexDirection: 'column'}}>
-      <Header text="Welcome, King" />
+      <Header title="Welcome, King" />
       {/* <SliderBox images={images}  /> */}
       <ImageBackground
         style={{height: '100%', width: '100%', bottom: 5}}

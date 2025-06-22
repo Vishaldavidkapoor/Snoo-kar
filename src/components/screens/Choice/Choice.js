@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, View, Image, TouchableOpacity, ImageBackground } from "react-native";
-import Header from "../../common/Header/Header";
+import { Header } from "../../common/Header/Header";
+
 
 const choice = ["8 Ball", "Snooker"];
 
