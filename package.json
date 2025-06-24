@@ -18,6 +18,7 @@
     "firebase": "^9.18.0",
     "react": "18.2.0",
     "react-native": "0.71.4",
+    "react-native-date-picker": "^5.0.13",
     "react-native-elements": "^3.4.3",
     "react-native-gesture-handler": "*",
     "react-native-image-slider-box": "^2.0.7",

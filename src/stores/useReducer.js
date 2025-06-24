@@ -1,6 +1,7 @@
 const initialState = {
     isLoggedIn: false,
-    username: ''
+    username: '',
+    tableRemaining: 5,
 };
 
 const reducer = (state = initialState, action) => {
@@ -20,6 +21,11 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 username: action.payload
+            };
+        case 'UPDATE_TABLE_REMAINING':
+            return {
+                ...state,
+                tableRemaining: action.payload
             };
         default:
             return state;

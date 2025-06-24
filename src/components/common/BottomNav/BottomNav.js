@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Text, View, Image, TouchableOpacity, Button } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import BookingScreen from "../../screens/BookingScreen/BookingScreen";
+import BookingScreen from "../../screens/BookingScreen/BookingScreen.tsx";
 import Profile from "../../screens/Profile/Profile";
 import Success from "../../screens/Success/Success";
 import Food from "../../screens/Food/Food";

@@ -18,3 +18,10 @@ export const changeNameAction = (username) =>{
         payload: username,
     }
 }
+
+export const updateTableRemaining = (tables) =>{
+    return {
+        type: 'UPDATE_TABLE_REMAINING',
+        payload: tables,
+    }
+}

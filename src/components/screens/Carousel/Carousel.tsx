@@ -15,7 +15,7 @@ export default Carousel = () => {
   ];
   return (
     <View style={{flex: 1, flexDirection: 'column'}}>
-      <Header title="Welcome, King" />
+      <Header text="Welcome, King" />
       {/* <SliderBox images={images}  /> */}
       <ImageBackground
         style={{height: '100%', width: '100%', bottom: 5}}

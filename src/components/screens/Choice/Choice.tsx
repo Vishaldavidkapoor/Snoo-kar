@@ -1,15 +1,20 @@
 import React from "react";
 import { Text, View, Image, TouchableOpacity, ImageBackground } from "react-native";
 import { Header } from "../../common/Header/Header";
+import { useNavigation } from "@react-navigation/native";
+import strings from "../../../utils/translations/en";
+import styles from "./styles";
 
 
-const choice = ["8 Ball", "Snooker"];
+const choice = [strings.Choice.game8Ball, strings.Choice.gameSnooker];
 
-export default Choice = ({navigation}) => {
+export const Choice = () => {
+  const navigation = useNavigation();
+
   return (
     <>
-      <Header text="Select a Game" />
-      <ImageBackground style={{height:'100%',width:'100%'}} 
+      <Header text={strings.Choice.selectGame} />
+      <ImageBackground style={styles.imageBackground} 
       source={require('../../../../assets/background.jpg')}>
       <View
         style={{
@@ -26,7 +31,7 @@ export default Choice = ({navigation}) => {
                 onPress={()=> navigation.navigate('Book a Table',{index}) }
                 >
               <Image
-                style={{ width: 170, height: 170 }}
+                style={{ width: 170, height: 170, borderRadius: 20 }}
                 source={
                   index == 0
                     ? require("../../../../assets/8balls.jpg")

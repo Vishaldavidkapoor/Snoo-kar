@@ -3,10 +3,8 @@ import {StyleSheet, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Carousel from './src/components/screens/Carousel/Carousel';
-import BookingScreen from './src/components/screens/BookingScreen/BookingScreen';
 import Profile from './src/components/screens/Profile/Profile';
 import Success from './src/components/screens/Success/Success';
-import Choice from './src/components/screens/Choice/Choice';
 import Food from './src/components/screens/Food/Food';
 import Settings from './src/components/screens/Settings/Settings';
 import Login from './src/components/screens/Login/Login';
@@ -19,6 +17,8 @@ import 'firebase/compat/firestore';
 import {Provider} from 'react-redux';
 import {store} from './src/stores/store';
 import { Header } from './src/components/common/Header/Header';
+import { BookingScreen } from './src/components/screens/BookingScreen/BookingScreen';
+import { Choice } from './src/components/screens/Choice/Choice';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCeObXAZZFEOezjV2NLcudkOQ4B0TCIlq0',
