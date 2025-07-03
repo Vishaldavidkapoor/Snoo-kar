@@ -18,5 +18,6 @@ export const colors: { [key: string]: string } = {
     maroon: "#800000",
     olive: "#808000",
     silver: "#C0C0C0",
-    gold: "#FFD700"
+    gold: "#FFD700",
+    emerald: "#50C878",
 };

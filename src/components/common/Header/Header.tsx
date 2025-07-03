@@ -11,7 +11,7 @@ export const Header: React.FC<HeaderProps> = ({ text }) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
+      <TouchableOpacity style={{width: 30}} onPress={() => navigation.goBack()}>
         <Image
           style={styles.backIcon}
           source={require('../../../../assets/back.png')}
