@@ -7,18 +7,32 @@ import {colors} from '../../../utils/colors';
 import TimePicker from '../../common/TimePicker/TImePicker';
 import {useDispatch, useSelector} from 'react-redux';
 import {updateTableRemaining} from '../../../stores/userActions';
+import {screens} from '../../../utils/screens';
+import moment, {min} from 'moment';
 
 export const BookingScreen = ({route}) => {
   const requireAudio = require('../../../../assets/break.mp3');
   const navigation = useNavigation();
   let index = route.params;
-  const [fromTime, setFromTime] = useState('');
-  const [toTime, setToTime] = useState('');
+  const [fromTime, setFromTime] = useState('00h 00m');
+  const [toTime, setToTime] = useState('00h 00m');
   const [showFromTime, setShowFromTime] = useState(false);
   const [showToTime, setShowToTime] = useState(false);
-  const tableRemaining = useSelector(state => state.userData.tableRemaining);
+  const tableRemaining = useSelector(
+    (state: any) => state.userData.tableRemaining,
+  );
   index = parseInt(Object.values(index).toString());
   const dispatch = useDispatch();
+  const totalTimeHours = moment(toTime, 'HH:mm').diff(
+    moment(fromTime, 'HH:mm'),
+    'h',
+  );
+  const totalTimeMinutes = moment(toTime, 'HH:mm').diff(
+    moment(fromTime, 'HH:mm'),
+    'm',
+  );
+
+  const isTimeSet = toTime && fromTime;
 
   const onPress = () => {
     const s = new Sound(requireAudio, e => {
@@ -28,9 +42,9 @@ export const BookingScreen = ({route}) => {
       }
       s.play(() => s.release());
     });
-    navigation.navigate('Success');
+    navigation.navigate(screens.Success as never);
     setTimeout(() => {
-    dispatch(updateTableRemaining(tableRemaining - 1));
+      dispatch(updateTableRemaining(tableRemaining - 1));
     }, 500);
   };
 
@@ -114,15 +128,78 @@ export const BookingScreen = ({route}) => {
           {tableRemaining}{' '}
         </Text>
       </Text>
+      {isTimeSet && tableRemaining > 0 ? (
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: 'bold',
+            paddingHorizontal: 20,
+            color: colors.emerald,
+          }}>
+          {'Total time booked: ' +
+            totalTimeHours +
+            'h ' +
+            totalTimeMinutes +
+            'min'}
+        </Text>
+      ) : (
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: 'bold',
+            paddingHorizontal: 20,
+            color: colors.red,
+          }}>
+          Please select time and check table availability
+        </Text>
+      )}
+      {!isNaN(totalTimeMinutes) && (
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: 'bold',
+            paddingHorizontal: 20,
+            color: colors.black,
+          }}>
+          Price to pay: {Math.ceil(totalTimeMinutes % 10) * 10 + ' Rs'}
+        </Text>
+      )}
       <TouchableOpacity
         style={{
           borderColor: 'black',
           borderWidth: 2,
-          width: '50%',
+          alignSelf: 'center',
           alignItems: 'center',
+          padding: 10,
+          height: 160,
+          width: 160,
+          marginTop: 100,
+          justifyContent: 'center',
+          borderRadius: 80,
+          backgroundColor: colors.black,
         }}
         onPress={() => onPress()}>
-        <Text style={{fontSize: 25, fontWeight: 'bold'}}>Book the table</Text>
+        <View
+          style={{
+            alignItems: 'center',
+            height: 80,
+            width: 80,
+            borderRadius: 40,
+            justifyContent: 'center',
+            backgroundColor: colors.white,
+            zIndex: -1,
+          }}>
+          <Text
+            style={{
+              fontSize: 15,
+              fontWeight: 'bold',
+              color: colors.black,
+              zIndex: 999,
+              textAlign: 'center',
+            }}>
+            Book the table
+          </Text>
+        </View>
       </TouchableOpacity>
     </View>
   );

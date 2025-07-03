@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {fontSize: 20, fontWeight: 'bold', color: colors.black},
-  backIcon: {margin: 5, height: 30, width: 30},
+  backIcon: { height: 20, width: 20},
 });
 
 export default styles;
