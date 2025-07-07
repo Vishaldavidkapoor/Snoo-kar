@@ -2,7 +2,6 @@ import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Carousel from './src/components/screens/Carousel/Carousel';
 import Profile from './src/components/screens/Profile/Profile';
 import Food from './src/components/screens/Food/Food';
 import Settings from './src/components/screens/Settings/Settings';
@@ -14,16 +13,19 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import {Provider} from 'react-redux';
 import {store} from './src/stores/store';
-import { BookingScreen } from './src/components/screens/BookingScreen/BookingScreen';
-import { Choice } from './src/components/screens/Choice/Choice';
+import {BookingScreen} from './src/components/screens/BookingScreen/BookingScreen';
+import {Choice} from './src/components/screens/Choice/Choice';
 import {getDatabase} from 'firebase/database';
-import { Success } from './src/components/screens/Success/Success';
+import {Success} from './src/components/screens/Success/Success';
+import { screens } from './src/utils/screens';
+import { Carousel } from './src/components/screens/Carousel/Carousel';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCeObXAZZFEOezjV2NLcudkOQ4B0TCIlq0',
   authDomain: 'snoo-kar.firebaseapp.com',
   projectId: 'snoo-kar',
-  databaseURL: 'https://snoo-kar-default-rtdb.asia-southeast1.firebasedatabase.app',
+  databaseURL:
+    'https://snoo-kar-default-rtdb.asia-southeast1.firebasedatabase.app',
   storageBucket: 'snoo-kar.appspot.com',
   messagingSenderId: '172145554760',
   appId: '1:172145554760:web:efbe4d8496a0da037c6f7d',
@@ -49,13 +51,13 @@ export default function App() {
               headerShown: false,
             }}
             initialRouteName="Carousel">
-            <Stack.Screen name="Book a Table" component={BookingScreen} />
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Register" component={Register} />
-            <Stack.Screen name="Carousel" component={Carousel} />
-            <Stack.Screen name="Choice" component={Choice} />
+            <Stack.Screen name={screens.BookingScreen} component={BookingScreen} />
+            <Stack.Screen name={screens.Login} component={Login} />
+            <Stack.Screen name={screens.Register} component={Register} />
+            <Stack.Screen name={screens.Carousel} component={Carousel} />
+            <Stack.Screen name={screens.Choice} component={Choice} />
             <Stack.Screen name="Profile" component={Profile} />
-            <Stack.Screen name="Success" component={Success} />
+            <Stack.Screen name={screens.Success} component={Success} />
             <Stack.Screen name="Food" component={Food} />
             <Stack.Screen name="Settings" component={Settings} />
           </Stack.Navigator>

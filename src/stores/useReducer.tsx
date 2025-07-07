@@ -1,31 +1,49 @@
+import { actions } from "./actions";
+
 const initialState = {
     isLoggedIn: false,
-    username: '',
+    userName: '',
     tableRemaining: 5,
+    isLoading: false,
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: { type: string; payload: any; }) => {
     switch (action.type) {
-        case 'LOGIN':
+        case actions.LOGIN:
             return {
                 ...state,
                 isLoggedIn: action.payload
             };
-        case 'LOGOUT':
+        case actions.LOGOUT:
             return {
                 ...state,
                 isLoggedIn: action.payload,
                 username: ''
             };
-        case 'CHANGE_NAME':
+        case actions.CHANGE_NAME:
             return {
                 ...state,
                 username: action.payload
             };
-        case 'UPDATE_TABLE_REMAINING':
+        case actions.UPDATE_TABLE_REMAINING:
             return {
                 ...state,
                 tableRemaining: action.payload
+            };
+        case  actions.SET_TABLES:
+            return {
+                ...state,
+                tableRemaining: action.payload
+            };
+        case actions.START_LOADING:
+            return {
+                ...state,
+                isLoading: true
+            };
+        case actions.STOP_LOADING:
+            return {
+                ...state,
+                isLoading: false
             };
         default:
             return state;

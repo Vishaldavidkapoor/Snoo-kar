@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { colors } from "../../../utils/colors";
+import { COLORS } from "../../../styles/colors";
 
 export const styles = StyleSheet.create({
   container: {
@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   timeLabel: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: colors.black,
+    color: COLORS.black,
   },
   timeValue: {
     fontSize: 20,
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     paddingHorizontal: 20,
-    color: colors.black,
+    color: COLORS.black,
   },
   valueText: {
     fontSize: 20,
@@ -48,7 +48,7 @@ export const styles = StyleSheet.create({
     marginTop: 100,
     justifyContent: 'center',
     borderRadius: 80,
-    backgroundColor: colors.black,
+    backgroundColor: COLORS.black,
   },
   bookButtonInner: {
     alignItems: 'center',
@@ -56,13 +56,13 @@ export const styles = StyleSheet.create({
     width: 80,
     borderRadius: 40,
     justifyContent: 'center',
-    backgroundColor: colors.white,
+    backgroundColor: COLORS.white,
     zIndex: -1,
   },
   bookButtonText: {
     fontSize: 15,
     fontWeight: 'bold',
-    color: colors.black,
+    color: COLORS.black,
     zIndex: 999,
     textAlign: 'center',
   },

@@ -1,39 +1,47 @@
-import React from 'react';
-import {SliderBox} from 'react-native-image-slider-box';
-import {TouchableOpacity, Text, View, ImageBackground} from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { Header } from '../../common/Header/Header';
+import React, {useEffect} from 'react';
+import {
+  TouchableOpacity,
+  Text,
+  View,
+  ImageBackground,
+  StyleSheet,
+} from 'react-native';
+import {useNavigation, NavigationProp} from '@react-navigation/native';
+import {Header} from '../../common/Header/Header';
+import Loader from '../../common/Loader/Loader';
+import {useDispatch, useSelector} from 'react-redux';
+import {actions} from '../../../stores/actions';
+import { styles } from './styles';
+import { RootStackParamList } from '../../../utils/NavigationStackList';
 
-export default Carousel = () => {
 
-  const navigation = useNavigation();
-  const images = [
-    'https://source.unsplash.com/1024x768/?nature',
-    'https://source.unsplash.com/1024x768/?water',
-    'https://source.unsplash.com/1024x768/?girl',
-    'https://source.unsplash.com/1024x768/?tree',
-  ];
+export const Carousel = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state: any) => state.userData.isLoading);
+
+  useEffect(() => {
+    console.log('Loader visible:', isLoading);
+  }, [isLoading]);
+
   return (
-    <View style={{flex: 1, flexDirection: 'column'}}>
-      <Header text="Welcome, King" />
-      {/* <SliderBox images={images}  /> */}
+    <View style={styles.container}>
+      <Loader isLoading={isLoading} />
+      <Header text="Welcome, User" />
       <ImageBackground
-        style={{height: '100%', width: '100%', bottom: 5}}
-        source={require('../../../../assets/background2.jpg')}
-        >
+        style={styles.backgroundImage}
+        source={require('../../../../assets/background3.jpeg')}>
         <TouchableOpacity
-          style={{top: 20, alignItems: 'center', justifyContent: 'center'}}
-          onPress={() => navigation.navigate('Choice')}>
-          <Text
-            style={{
-              fontSize: 50,
-              marginTop: 160,
-              fontWeight: 'bold',
-              color: 'white',
-              textDecorationLine:'underline'
-            }}>
-            Book a Table
-          </Text>
+          style={styles.button}
+          onPress={() => {
+            dispatch({type: actions.START_LOADING});
+            const timer = setTimeout(() => {
+              navigation.navigate('Choice');
+              dispatch({type: actions.STOP_LOADING});
+              clearTimeout(timer);
+            }, 2000);
+          }}>
+          <Text style={styles.buttonText}>Book a Table</Text>
         </TouchableOpacity>
       </ImageBackground>
     </View>
