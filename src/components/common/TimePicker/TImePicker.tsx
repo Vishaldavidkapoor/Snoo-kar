@@ -2,7 +2,6 @@ import {Text, TouchableOpacity} from 'react-native';
 import DatePicker from 'react-native-date-picker';
 import React, {useState} from 'react';
 import {View} from 'react-native';
-import {colors} from '../../../utils/colors';
 
 type TimePickerProps = {
   showTime: boolean;

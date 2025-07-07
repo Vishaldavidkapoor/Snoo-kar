@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Text, View, Image, TouchableOpacity, Button } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import BookingScreen from "../../screens/BookingScreen/BookingScreen.tsx";
-import Profile from "../../screens/Profile/Profile";
-import Success from "../../screens/Success/Success";
-import Food from "../../screens/Food/Food";
-import Settings from "../../screens/Settings/Settings";
-import Carousel from "../../screens/Carousel/Carousel";
-import Choice from "../../screens/Choice/Choice";
+import BookingScreen from "../../screens/BookingScreen/BookingScreen.js";
+import Profile from "../../screens/Profile/Profile.js";
+import Success from "../../screens/Success/Success.js";
+import Food from "../../screens/Food/Food.js";
+import Settings from "../../screens/Settings/Settings.js";
+import Carousel from "../../screens/Carousel/Carousel.js";
+import Choice from "../../screens/Choice/Choice.js";
 
 const Tab = createBottomTabNavigator();
 
