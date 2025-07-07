@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Image } from 'react-native';
 
-export default Success = ({ navigation }) => {
+export const Success = ({ navigation }) => {
   useEffect(() => {
     setTimeout(() => navigation.navigate('Carousel'), 2000);
   }, []);
