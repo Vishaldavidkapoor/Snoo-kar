@@ -61,7 +61,7 @@ export default function App() {
             <Stack.Screen name={screens.Success} component={Success} />
             <Stack.Screen name="Food" component={Food} />
             <Stack.Screen name="Settings" component={Settings} />
-            <Stack.Screen name={screens.MapViewLocation} component={MapViewLocation} />
+            {/* <Stack.Screen name={screens.MapViewLocation} component={MapViewLocation} /> */}
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>
