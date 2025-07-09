@@ -19,6 +19,7 @@ import {getDatabase} from 'firebase/database';
 import {Success} from './src/components/screens/Success/Success';
 import { screens } from './src/utils/screens';
 import { Carousel } from './src/components/screens/Carousel/Carousel';
+import { MapViewLocation } from './src/components/screens/MapViewLocation/MapViewLocation';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCeObXAZZFEOezjV2NLcudkOQ4B0TCIlq0',
@@ -60,6 +61,7 @@ export default function App() {
             <Stack.Screen name={screens.Success} component={Success} />
             <Stack.Screen name="Food" component={Food} />
             <Stack.Screen name="Settings" component={Settings} />
+            <Stack.Screen name={screens.MapViewLocation} component={MapViewLocation} />
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>

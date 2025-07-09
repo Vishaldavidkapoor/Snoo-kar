@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
-import {StyleSheet, Modal, View} from 'react-native';
-import {LoaderProps} from './type';
+import React from 'react';
+import {Modal, View} from 'react-native';
 import LottieView from 'lottie-react-native';
+import {LoaderProps} from './type';
+import {styles} from './styles';
 
-const Loader = ({isLoading = true}) => {
+const Loader = ({isLoading}: LoaderProps) => {
   return (
     <Modal transparent={true} animationType="none" visible={isLoading}>
       <View style={styles.modalBackground}>
@@ -20,23 +21,5 @@ const Loader = ({isLoading = true}) => {
     </Modal>
   );
 };
-const styles = StyleSheet.create({
-  modalBackground: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)', // semi-transparent backdrop
-  },
-  loaderContainer: {
-    height: 320,
-    width: 320,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  lottie: {
-    height: 320,
-    width: 320,
-    transform: [{rotateZ: '90deg'}],
-  },
-});
+
 export default Loader;

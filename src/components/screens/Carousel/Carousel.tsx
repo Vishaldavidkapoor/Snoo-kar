@@ -4,7 +4,6 @@ import {
   Text,
   View,
   ImageBackground,
-  StyleSheet,
 } from 'react-native';
 import {useNavigation, NavigationProp} from '@react-navigation/native';
 import {Header} from '../../common/Header/Header';
@@ -19,10 +18,6 @@ export const Carousel = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const dispatch = useDispatch();
   const isLoading = useSelector((state: any) => state.userData.isLoading);
-
-  useEffect(() => {
-    console.log('Loader visible:', isLoading);
-  }, [isLoading]);
 
   return (
     <View style={styles.container}>
