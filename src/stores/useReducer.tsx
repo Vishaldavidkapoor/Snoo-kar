@@ -3,7 +3,7 @@ import { actions } from "./actions";
 const initialState = {
     isLoggedIn: false,
     userName: '',
-    tableRemaining: 5,
+    tableRemaining: 0,
     isLoading: false,
 };
 

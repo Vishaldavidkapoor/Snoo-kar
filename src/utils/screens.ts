@@ -6,4 +6,5 @@ export const screens = {
     Success: 'Success',
     Register: 'Register',
     Carousel: 'Carousel',
+    MapViewLocation: 'MapViewLocation',
 };
