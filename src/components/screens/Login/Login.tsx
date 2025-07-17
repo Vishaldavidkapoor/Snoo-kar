@@ -12,6 +12,7 @@ import TextInputWithTitle from '../../common/TextInputwithTitle/TextInputwithTit
 import strings from '../../../utils/translations/en';
 import { COLORS } from '../../../styles/colors';
 import { screens } from '../../../utils/screens';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -44,6 +45,7 @@ const Login = () => {
             setError(true);
             console.log(error);
           });
+          await AsyncStorage.setItem('isLoggedIn', String(true));
     dispatch(loginAction());
   };
 
@@ -56,7 +58,7 @@ const Login = () => {
         backgroundColor: '#fff',
       }}>
       <Image
-        style={{height: 300, width: 300, marginTop: 70}}
+        style={{height: 250, width: 250, marginTop: 70}}
         source={require('../../../../assets/logo.jpg')}
       />
       <Text style={{fontSize: 38, fontWeight:'500', color:COLORS.black}}>Snoo-Kar</Text>

@@ -1,7 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
-// Import the functions you need from the SDKs you need
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
@@ -27,6 +26,7 @@ if (firebase.apps.length === 0) {
 } else {
   app = firebase.app();
 }
+
 
 export const db = getDatabase(app);
 

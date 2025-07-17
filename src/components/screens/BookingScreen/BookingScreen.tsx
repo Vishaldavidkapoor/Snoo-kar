@@ -64,6 +64,7 @@ export const BookingScreen = ({route}) => {
         ...bookingData,
         fromTime: fromTime,
         toTime: toTime,
+        bookingDate: new Date(),
         bookingID: uuid.v4().toString(),
       };
 
