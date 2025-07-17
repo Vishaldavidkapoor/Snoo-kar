@@ -1,27 +1,28 @@
 import React, { useState } from "react";
 import { Text, View, Image, TouchableOpacity, Button } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import BookingScreen from "../../screens/BookingScreen/BookingScreen.js";
-import Profile from "../../screens/Profile/Profile.js";
-import Success from "../../screens/Success/Success.js";
-import Food from "../../screens/Food/Food.js";
-import Settings from "../../screens/Settings/Settings.js";
-import Carousel from "../../screens/Carousel/Carousel.js";
-import Choice from "../../screens/Choice/Choice.js";
+import { useNavigation } from "@react-navigation/native";
+import HomeStack from "../../../navigation/HomeStacks";
+import { Choice } from "../../screens/Choice/Choice";
+import Food from "../../screens/Food/Food";
+import Profile from "../../screens/Profile/Profile";
+import Settings from "../../screens/Settings/Settings";
 
 const Tab = createBottomTabNavigator();
 
-export default BottomNav = () => {
+export const BottomNav = () => {
+  const navigation = useNavigation()
   return (
+
     <Tab.Navigator
       screenOptions={{ headerShown: false }}
     >
       <Tab.Screen
         name="Home"
-        component={Carousel}
+        component={HomeStack}
         options={{
           tabBarIcon: () => (
-            <View
+            <TouchableOpacity
               style={{ flexDirection: "column", alignItems: "center" }}
               onPress={() => navigation.navigate("Profile")}
             >
@@ -34,13 +35,13 @@ export default BottomNav = () => {
                 }}
                 source={require("../../../../assets/navIcons/house.png")}
               />
-            </View>
+            </TouchableOpacity>
           ),
         }}
       />
       <Tab.Screen name="Book a Table" component={Choice} options={{
         tabBarIcon: () => (
-          <View
+          <TouchableOpacity
             style={{ flexDirection: "column", alignItems: "center" }}
             onPress={() => navigation.navigate("Profile")}
           >
@@ -53,12 +54,12 @@ export default BottomNav = () => {
               }}
               source={require("../../../../assets/navIcons/8.png")}
             />
-          </View>
+          </TouchableOpacity>
         ),
       }} />
       <Tab.Screen name="Food" component={Food} options={{
         tabBarIcon: () => (
-          <View
+          <TouchableOpacity
             style={{ flexDirection: "column", alignItems: "center" }}
             onPress={() => navigation.navigate("Profile")}
           >
@@ -71,12 +72,12 @@ export default BottomNav = () => {
               }}
               source={require("../../../../assets/navIcons/popcorn.png")}
             />
-          </View>
+          </TouchableOpacity>
         ),
       }} />
       <Tab.Screen name="Profile" component={Profile} options={{
         tabBarIcon: () => (
-          <View
+          <TouchableOpacity
             style={{ flexDirection: "column", alignItems: "center" }}
             onPress={() => navigation.navigate("Profile")}
           >
@@ -89,13 +90,13 @@ export default BottomNav = () => {
               }}
               source={require("../../../../assets/navIcons/pro.png")}
             />
-          </View>
+          </TouchableOpacity>
         ),
       }} />
 
       <Tab.Screen name="Settings" component={Settings} options={{
         tabBarIcon: () => (
-          <View
+          <TouchableOpacity
             style={{ flexDirection: "column", alignItems: "center" }}
             onPress={() => navigation.navigate("Profile")}
           >
@@ -108,7 +109,7 @@ export default BottomNav = () => {
               }}
               source={require("../../../../assets/navIcons/set.png")}
             />
-          </View>
+          </TouchableOpacity>
         ),
       }} />
     </Tab.Navigator>
