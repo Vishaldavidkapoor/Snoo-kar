@@ -6,7 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 import {screens} from '../../../utils/screens';
 import {useDispatch} from 'react-redux';
 import {loginOutAction} from '../../../stores/userActions';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { setItem } from '../../../utils/Storage';
 
 interface ListData {
   name: string;
@@ -30,7 +30,7 @@ const Settings = () => {
       name: 'Logout',
       onPress: async () => {
         dispatch(loginOutAction());
-        AsyncStorage.setItem('isLoggedIn', String(false));
+        await setItem('isLoggedIn', String(false));
         navigation.navigate(screens.Login);
       },
     },

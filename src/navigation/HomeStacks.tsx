@@ -5,15 +5,14 @@ import Login from '../components/screens/Login/Login';
 import Register from '../components/screens/Register/Register';
 import {Carousel} from '../components/screens/Carousel/Carousel';
 import {Choice} from '../components/screens/Choice/Choice';
-import Profile from '../components/screens/Profile/Profile';
 import {Success} from '../components/screens/Success/Success';
-import Food from '../components/screens/Food/Food';
 import Settings from '../components/screens/Settings/Settings';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {useEffect, useState} from 'react';
 import {loginAction} from '../stores/userActions';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {actions} from '../stores/actions';
+import {AuthStack} from './AuthStack';
+import { getItem } from '../utils/Storage';
 
 const HomeStack = () => {
   const Stack = createNativeStackNavigator();
@@ -24,27 +23,31 @@ const HomeStack = () => {
     getLoginStatus();
   }, []);
 
+
   const getLoginStatus = async () => {
     try {
       dispatch({type: actions.START_LOADING});
-      const data = Promise.resolve(await AsyncStorage.getItem('isLoggedIn'));
-      if (await Boolean(data)) {
+      const data = await getItem('isLoggedIn');
+      console.log('object', data);
+      if (data !== 'false') {
         dispatch(loginAction());
         setIsLoggedIn(true);
       }
     } catch (e) {
       console.log('error', e);
     } finally {
-      dispatch({type: actions.START_LOADING});
+      dispatch({type: actions.STOP_LOADING});
     }
   };
 
-  return (
+  return !isLoggedIn ? (
+    <AuthStack />
+  ) : (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName={isLoggedIn ? screens.Choice : screens.Login}>
+      initialRouteName={screens.Carousel}>
       <Stack.Screen name={screens.BookingScreen} component={BookingScreen} />
       <Stack.Screen name={screens.Login} component={Login} />
       <Stack.Screen name={screens.Register} component={Register} />

@@ -1,21 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import {Settings, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {TouchableOpacity} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {useNavigation} from '@react-navigation/native';
 import HomeStack from '../../../navigation/HomeStacks';
 import {Choice} from '../../screens/Choice/Choice';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SettingsStack from '../../../navigation/SettingsStack';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Tab = createBottomTabNavigator();
 
 export const BottomNav = () => {
   const navigation = useNavigation();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-
-  
   return (
     <Tab.Navigator screenOptions={{headerShown: false}}>
       <Tab.Screen
