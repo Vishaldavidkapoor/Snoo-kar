@@ -4,10 +4,11 @@ import {NavigationContainer} from '@react-navigation/native';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
-import {Provider} from 'react-redux';
+import {Provider, useDispatch} from 'react-redux';
+import { getDatabase, ref, onValue, get } from 'firebase/database';
 import {store} from './src/stores/store';
-import {getDatabase} from 'firebase/database';
 import {BottomNav} from './src/components/common/BottomNav/BottomNav';
+import { actions } from './src/stores/actions';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCeObXAZZFEOezjV2NLcudkOQ4B0TCIlq0',
@@ -31,6 +32,7 @@ if (firebase.apps.length === 0) {
 export const db = getDatabase(app);
 
 export default function App() {
+
   return (
     <View style={styles.container}>
       <Provider store={store}>
