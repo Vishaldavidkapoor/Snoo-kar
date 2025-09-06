@@ -14,30 +14,32 @@ import {useEffect, useState} from 'react';
 import {loginAction} from '../stores/userActions';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {actions} from '../stores/actions';
+import { getDatabase, onValue, ref } from 'firebase/database';
 
 const HomeStack = () => {
   const Stack = createNativeStackNavigator();
   const dispatch = useDispatch();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  useEffect(() => {
-    getLoginStatus();
-  }, []);
+const db = getDatabase();
 
-  const getLoginStatus = async () => {
-    try {
-      dispatch({type: actions.START_LOADING});
-      const data = Promise.resolve(await AsyncStorage.getItem('isLoggedIn'));
-      if (await Boolean(data)) {
-        dispatch(loginAction());
-        setIsLoggedIn(true);
-      }
-    } catch (e) {
-      console.log('error', e);
-    } finally {
-      dispatch({type: actions.START_LOADING});
-    }
+ const tableRef = ref(db, 'tables');
+
+useEffect(() => {
+  const unsubscribe = onValue(tableRef, (snapshot) => {
+    const data = snapshot.val();
+    // Update your state with the new data
+ dispatch({
+        type: actions.SET_TABLES,
+        payload: data.tableRemaining,
+      });
+  });
+
+  return () => {
+    // Always clean up the listener
+    unsubscribe();
   };
+}, []);
 
   return (
     <Stack.Navigator

@@ -38,6 +38,7 @@ export const BookingScreen = ({route}) => {
     totalTimeHours > 1
       ? totalTimeHours - (totalTimeHours % 60)
       : moment(toTime, 'HH:mm').diff(moment(fromTime, 'HH:mm'), 'm') % 60;
+      
   useEffect(() => {
     fetchRemainingTablesCount();
   }, []);
@@ -47,7 +48,6 @@ export const BookingScreen = ({route}) => {
     const snapshot = await get(tableRef);
     if (snapshot.exists()) {
       const tables = snapshot.val();
-      // console.log('Tables fetched:', tables);
       dispatch({
         type: actions.SET_TABLES,
         payload: tables.tableRemaining,
