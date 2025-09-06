@@ -10,7 +10,9 @@ import styles from './styles';
 import {useNavigation} from '@react-navigation/native';
 import TextInputWithTitle from '../../common/TextInputwithTitle/TextInputwithTitle';
 import strings from '../../../utils/translations/en';
-import { colors } from '../../../utils/colors';
+import { COLORS } from '../../../styles/colors';
+import { screens } from '../../../utils/screens';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -25,12 +27,12 @@ const Login = () => {
     isLoggedIn && navigation.navigate('BookingScreen');
   }, []);
 
-  const handleLogin = async (email, password) => {
+  const handleLogin = async (email: string, password: string) => {
     isNewUser
       ? await firebase
           .auth()
           .createUserWithEmailAndPassword(email, password)
-          .then(() => navigation.navigate('Carousel'))
+          .then(() => navigation.navigate(screens.Carousel))
           .catch(error => {
             setError(true);
             console.log(error);
@@ -38,11 +40,12 @@ const Login = () => {
       : await firebase
           .auth()
           .signInWithEmailAndPassword(email, password)
-          .then(() => navigation.navigate('Carousel'))
+          .then(() => navigation.navigate(screens.Carousel))
           .catch(error => {
             setError(true);
             console.log(error);
           });
+          await AsyncStorage.setItem('isLoggedIn', String(true));
     dispatch(loginAction());
   };
 
@@ -55,10 +58,10 @@ const Login = () => {
         backgroundColor: '#fff',
       }}>
       <Image
-        style={{height: 300, width: 300, marginTop: 70}}
+        style={{height: 250, width: 250, marginTop: 70}}
         source={require('../../../../assets/logo.jpg')}
       />
-      <Text style={{fontSize: 38, fontWeight:'500', color:colors.black}}>Snoo-Kar</Text>
+      <Text style={{fontSize: 38, fontWeight:'500', color:COLORS.black}}>Snoo-Kar</Text>
       <View style={{ width: '100%', flex: 2/3}}>
         <TextInputWithTitle
           title="Email"

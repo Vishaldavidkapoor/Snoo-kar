@@ -8,6 +8,11 @@ const strings = {
         email: "Email",
         password: "Password",
         returnToLogin: "Return to Login",
+    },
+    Choice:{
+        selectGame: "Select a Game",
+        game8Ball: "8 Ball",
+        gameSnooker: "Snooker",
     }
 };
 

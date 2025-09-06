@@ -1,0 +1,15 @@
+export const screens = {
+  Login: 'Login',
+  Choice: 'Choice',
+  BookingScreen: 'BookingScreen',
+  Success: 'Success',
+  Register: 'Register',
+  Carousel: 'Carousel',
+  MapViewLocation: 'MapViewLocation',
+  Payments: 'Payments',
+  Help: 'Help',
+  YourBookings: 'YourBookings',
+  User: 'User',
+  Settings: 'Settings',
+  Setting: 'Setting',
+};
